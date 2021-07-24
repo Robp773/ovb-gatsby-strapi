@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "notes",
+  "info": {
+    "name": "note",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "content": {
+      "type": "richtext",
+      "required": true
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": [
+        "Technical",
+        "Teamwork",
+        "Leadership"
+      ],
+      "required": true
+    },
+    "ropes_course_activities": {
+      "collection": "ropes-course-activity"
+    }
+  }
+}

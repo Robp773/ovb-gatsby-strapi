@@ -94,32 +94,31 @@ async function createEntry(model, entry, files) {
 
 async function importGlobal() {
   const files = {
-    "favicon": getFileData("favicon.png"),
+    favicon: getFileData("favicon.png"),
     "defaultSeo.shareImage": getFileData("placeholder.png"),
-    "placeHolder": getFileData("placeholder.png")
+    placeHolder: getFileData("placeholder.png"),
   };
 
   return createEntry("global", global, files);
 }
 
-
 async function importCategories() {
   categories.forEach(async (category) => {
     const files = {
-      image: getFileData(`${category.slug}.png`)
-    }
+      image: getFileData(`${category.slug}.png`),
+    };
     await createEntry("category", category, files);
   });
 }
 
-async function importProducts() {
-  products.forEach(async (product) => {
-    const files = {
-      image: getFileData(`${product.slug}.png`)
-    }
-    await createEntry("product", product, files);
-  });
-}
+// async function importProducts() {
+//   products.forEach(async (product) => {
+//     const files = {
+//       image: getFileData(`${product.slug}.png`),
+//     };
+//     await createEntry("product", product, files);
+//   });
+// }
 
 async function importSeedData() {
   // Allow read of application content types
@@ -127,12 +126,11 @@ async function importSeedData() {
     global: ["find"],
     product: ["find", "findone"],
     category: ["find", "findone"],
+    note: ["find", "findone"],
   });
 
   // Create all entries
-  await importGlobal()
-  await importProducts();
-  await importCategories();
+  await importGlobal();
 }
 
 module.exports = async () => {
